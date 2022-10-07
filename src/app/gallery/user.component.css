@@ -1,0 +1,17 @@
+span.span-username {
+    font-weight: 400;
+    color: #767676;
+}
+
+.width-custom {
+    width: 400px;
+}
+
+.details-user
+{
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    margin-bottom: 0;
+    color: #6c757d;
+}

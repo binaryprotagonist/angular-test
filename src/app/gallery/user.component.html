@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <!-- <select
+        class="form-select form-select-md mt-3 w-50"
+        aria-label=".form-select-lg example"
+        [ngModel]="selectedAlbumId"
+        (ngModelChange)="albumChange($event)"
+      >
+        <option value="-1">Select Gallery Categroy</option>
+  
+        <option *ngFor="let id of albumIds$ | async" [value]="id">
+          {{ id }}
+        </option>
+      </select>  -->
+    <input type="text" (keyup)="searchHandler($event)" class="form-control mt-4 mb-4 width-custom"
+      placeholder="Search" />
+  </div>
+  <div class="row">
+    <div *ngFor="let item of userarray" class="card m-3" style="width:
+      24rem;">
+
+      <div class="card-body">
+        <h5 class="card-title">Username: <span class="span-username">{{item.username}}</span></h5>
+        <h5 class="card-title">Email: <span class="span-username">{{item.email}}</span></h5>
+        <h5 class="card-title">Address: <span class="span-username">{{item.address.street}}</span>
+        </h5>
+        <h5 class="card-title">Phone no: <span class="span-username">{{item.phone}}</span></h5>
+        <h5 class="card-title">Website: <a href="#" class="span-username">{{item.website}}</a></h5>
+        <button type="button" data-toggle="modal"
+          data-target="#exampleModalCenter" (click)="passId(item)" class="btn
+          btn-primary mt-2">View Details</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Info</h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-toggle="tab"
+              data-target="#nav-home" type="button" role="tab"
+              aria-controls="nav-home" aria-selected="true">User Detail</button>
+            <button class="nav-link" id="nav-profile-tab" data-toggle="tab"
+              data-target="#nav-profile" type="button" role="tab"
+              aria-controls="nav-profile" aria-selected="false">History Info</button>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+            aria-labelledby="nav-home-tab">
+            <!-- <h1 class="details-user">User Detail</h1> -->
+            <app-user-info>
+              <h1 class="details-user">User Info</h1>
+
+            </app-user-info>
+            <div class="card-body">
+              <h5 class="card-title">Username: <span class="span-username">{{detail?.username}}</span></h5>
+              <h5 class="card-title">Email: <span class="span-username">{{detail?.email}}</span></h5>
+              <h5 class="card-title">Address: <span class="span-username">{{detail?.address?.street}}</span>
+              </h5>
+              <h5 class="card-title">Phone no: <span class="span-username">{{detail?.phone}}</span></h5>
+              <h5 class="card-title">Website: <a href="#" class="span-username">{{detail?.website}}</a></h5>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+            aria-labelledby="nav-profile-tab">
+            <app-user-info>
+              <h1 id="header" class="details-user">History Info</h1>
+            </app-user-info>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
